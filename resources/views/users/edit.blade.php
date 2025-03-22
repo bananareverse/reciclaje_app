@@ -21,10 +21,10 @@
     </div>
 @endif
 
-<!-- Formulario de Edición -->
+
 <form action="{{ route('users.update', $user->id) }}" method="POST">
     @csrf
-    @method('PUT') <!-- Indica que es una actualización -->
+    @method('PUT') 
 
     <label>Nombre:</label>
     <input type="text" name="name" value="{{ old('name', $user->name) }}" required>
