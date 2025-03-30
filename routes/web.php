@@ -11,6 +11,10 @@ Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.e
 Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
 Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 
+use App\Http\Controllers\LogroController;
+
+Route::get('/logros', [LogroController::class, 'index'])->name('logros.index');
+
 use App\Http\Controllers\ProductController;
 
 Route::resource('products', ProductController::class);

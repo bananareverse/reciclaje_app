@@ -42,5 +42,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Badge::class);
     }
- 
+
+    //Un logro pertenece a muchos usuarios
+    public function logros()
+    {
+        return $this->belongsToMany(Logro::class, 'usuario_logro', 'id_usuario', 'id_logro')->withPivot('fecha_obtencion');
+    }
 }
