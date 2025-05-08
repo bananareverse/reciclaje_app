@@ -18,7 +18,7 @@ body {
                 <h4 class="text-center text-white mb-4">EcoVest</h4>
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">
+                        <a class="nav-link text-white" href="{{ route('dashboard') }}">
                             📊 Dashboard
                         </a>
                     </li>
@@ -33,7 +33,7 @@ body {
                         </a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ route('community-posts.index') }}">
+                        <a class="nav-link text-white" href="{{ route('community-posts.index') }}">
                         ♻️ Comunidad
                         </a>
                     </li>
@@ -47,40 +47,27 @@ body {
         </nav>
 
         <!-- Contenido Principal -->
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
-            <!-- Header con Foto de Perfil e Info del Usuario -->
-            <div class="d-flex justify-content-between align-items-center my-4">
-                <div class="d-flex align-items-center">
-                    <img src="{{ Auth::user()->avatar_url ? asset('storage/' . Auth::user()->avatar_url) : asset('images/default-avatar.png') }}" 
-                         alt="Foto de Perfil" class="rounded-circle border border-black shadow-sm" width="80" height="80">
-                    <div class="ms-3">
-                        <h2 >¡Hola, {{ Auth::user()->name }}!</h2>
-                        <p class="text-muted">{{ Auth::user()->email }}</p>
-                    </div>
-                </div>
-            </div>
+        <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <h2 class="my-4 text-success">Centros de Reciclaje</h2>
 
-            <!-- Secciones de Contenido -->
             <div class="row">
-                <div class="col-md-6 mb-4">
-                    <div class="card shadow-lg rounded-3 border-0">
-                        <div class="card-body">
-                            <h5 class="text-success">🌱 Progreso de Reciclaje</h5>
-                            <p>Aquí podrás ver tu progreso y estadísticas detalladas.</p>
+                @foreach ($centrosReciclaje as $centro)
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow-lg border-success" style="border-radius: 12px;">
+                            <div class="card-body">
+                                <h5 class="card-title text-success">{{ $centro->name }}</h5>
+                                <p class="card-text"><i class="bi bi-geo-alt-fill"></i> <strong>Ubicación:</strong> {{ $centro->location }}</p>
+                                <p class="card-text"><i class="bi bi-phone-fill"></i> <strong>Contacto:</strong> {{ $centro->contact }}</p>
+                                <p class="card-text"><i class="bi bi-recycle"></i> <strong>Materiales Aceptados:</strong> {{ $centro->materials_accepted }}</p>
+                                <p class="card-text"><i class="bi bi-clock"></i> <strong>Horario:</strong> {{ $centro->schedule }}</p>
+                                <p class="card-text"><i class="bi bi-star-fill"></i> <strong>Calificación:</strong> {{ $centro->rating }} ⭐</p>
+                                
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="col-md-6 mb-4">
-                    <div class="card shadow-lg rounded-3 border-0">
-                        <div class="card-body">
-                            <h5 class="text-success">🏅 Premios Disponibles</h5>
-                            <p>Canjea tus puntos por increíbles premios.</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
-        </main>
+        </div>
     </div>
 </div>
 @endsection

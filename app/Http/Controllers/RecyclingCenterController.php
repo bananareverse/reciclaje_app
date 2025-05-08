@@ -12,7 +12,8 @@ class RecyclingCenterController extends Controller
      */
     public function index()
     {
-        //
+        $centrosReciclaje = RecyclingCenter::all(); // Obtener todos los centros de reciclaje
+        return view('recyclingCenters.index', compact('centrosReciclaje'));
     }
 
     /**
@@ -62,4 +63,5 @@ class RecyclingCenterController extends Controller
     {
         //
     }
+ 
 }

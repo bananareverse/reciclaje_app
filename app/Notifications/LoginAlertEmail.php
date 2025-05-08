@@ -29,6 +29,6 @@ class LoginAlertEmail extends Notification
                     ->line('Se ha iniciado sesión en tu cuenta.')
                     ->line('Si no fuiste tú, por favor cambia tu contraseña inmediatamente.')
                     ->action('Ver mi cuenta', url('/dashboard'))
-                    ->line('Gracias por usar nuestra aplicación.');
+                    ->line('EcoVest! 🌿');
     }
 }

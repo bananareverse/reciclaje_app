@@ -24,14 +24,17 @@ class WelcomeEmail extends Notification
 
     public function toMail($notifiable)
     {
-        // Aquí definimos el contenido del correo
         return (new MailMessage)
-                    ->greeting('¡Bienvenido!')
-                    ->line('Gracias por registrarte en nuestra aplicación.')
-                    ->action('Visitar nuestro sitio', url('/'))
-                    ->line('¡Estamos felices de tenerte con nosotros!');
+            ->greeting('¡Bienvenido a EcoVest! 🌿')
+            ->line('Gracias por registrarte en nuestra aplicación. Esperamos que disfrutes tu experiencia.')
+            ->action('Visitar nuestro sitio', url('/'))
+            ->line('Si tienes alguna pregunta, no dudes en contactarnos.')
+            ->salutation('Saludos cordiales, El equipo de EcoVest');
     }
 
-    // Si necesitas almacenar la notificación en base de datos u otros canales,
-    // puedes agregar otros métodos como toDatabase() o toBroadcast().
+
+
 }
+
+
+

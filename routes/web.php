@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
+
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
 Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
 Route::post('/users', [UserController::class, 'store'])->name('users.store');
@@ -28,3 +29,12 @@ Route::middleware(['auth'])->group(function () {
         return view('dashboard');
     })->name('dashboard');
 });
+
+use App\Http\Controllers\RecyclingCenterController;
+
+Route::resource('recycling-centers', RecyclingCenterController::class);
+
+use App\Http\Controllers\CommunityPostController;
+
+Route::resource('community-posts', CommunityPostController::class);
+
